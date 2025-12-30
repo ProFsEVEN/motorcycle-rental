@@ -3,13 +3,16 @@ using { com.pala.motorental as my } from '../db/schema';
 // --- BIKES (Motorlar) İÇİN ARAYÜZ KURALLARI ---
 annotate my.Bikes with {
     // 1. Alanların Ekranda Nasıl Görüneceği (Etiketler)
-    imageUrl    @UI.Hidden; // Resim URL'sini metin olarak gösterme, aşağıda özel kullanacağız
-    make        @title: 'Marka';
-    model       @title: 'Model';
-    plateNumber @title: 'Plaka';
-    dailyRate   @title: 'Günlük Ücret';
-    currency    @title: 'Para Birimi';
-    status      @title: 'Durum' @Common.Text: status.name @Common.TextArrangement: #TextOnly;
+    
+    // 👇 DEĞİŞİKLİK 1: Hidden'ı sildik, yerine "Bu bir Resimdir" dedik!
+    imageUrl        @UI.IsImageURL : true;
+    
+    make            @title: 'Marka';
+    model           @title: 'Model';
+    plateNumber     @title: 'Plaka';
+    dailyRate       @title: 'Günlük Ücret';
+    currency        @title: 'Para Birimi';
+    status          @title: 'Durum' @Common.Text: status.name @Common.TextArrangement: #TextOnly;
 };
 
 annotate my.Bikes with @(
@@ -18,8 +21,9 @@ annotate my.Bikes with @(
         HeaderInfo: {
             TypeName: 'Motosiklet',
             TypeNamePlural: 'Motosikletler',
-            Title: { Value: make }, // Başlıkta Marka yazsın
-            Description: { Value: model } // Altında Model yazsın
+            Title: { Value: make },       // Başlıkta Marka yazsın
+            Description: { Value: model }, // Altında Model yazsın
+            ImageUrl: imageUrl             // 👇 Başlığa da küçük logo olarak resim ekledik
         },
 
         // 3. Filtreleme Alanları (Üstteki Arama Çubuğu)
@@ -27,13 +31,17 @@ annotate my.Bikes with @(
 
         // 4. Liste Görünümü (Tablo Sütunları)
         LineItem: [
-            // { Value: imageUrl, Label: 'Resim' }, // Resim URL'si yerine resmi göstermek için Fiori ayarı gerekebilir, şimdilik kapalı
+            // 👇 DEĞİŞİKLİK 2: Yorum satırını kaldırdık ve en başa koyduk
+            { Value: imageUrl, Label: 'Görsel', width: '90px' },
+            
             { Value: make },
             { Value: model },
             { Value: plateNumber },
             { Value: dailyRate },
-            { Value: currency_code }, // Para birimi kodu
-            { Value: status_code, Criticality: status.code } // Duruma göre renk (Yeşil/Kırmızı)
+            { Value: currency_code }, 
+            
+            // 👇 Renklendirme için status.criticality kullandık (Schema'ya uygunsa)
+            { Value: status_code, Criticality: status.criticality } 
         ],
 
         // 5. Detay Sayfası Görünümü
@@ -53,6 +61,8 @@ annotate my.Bikes with @(
         // Detay Sayfasındaki Form Alanları
         FieldGroup#Main: {
             Data: [
+                // Detay sayfasına da büyük resim koyalım
+                { Value: imageUrl, Label: 'Motor Görseli' }, 
                 { Value: make },
                 { Value: model },
                 { Value: plateNumber },
@@ -64,7 +74,6 @@ annotate my.Bikes with @(
 );
 
 // --- RENTALS (Kiralamalar) İÇİN LİSTE GÖRÜNÜMÜ ---
-// Detay sayfasında "Geçmiş Kiralamalar" tablosu için
 annotate my.Rentals with @(
     UI.LineItem: [
         { Value: startDate, Label: 'Başlangıç' },

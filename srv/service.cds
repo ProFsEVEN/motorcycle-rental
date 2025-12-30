@@ -8,11 +8,3 @@ service AdminService @(path:'/admin') {
     entity Maintenances as projection on my.Maintenances;
     entity BikeStatus as projection on my.BikeStatus;
 }
-
-
-service CatalogService @(path:'/browse') {
-    
-
-    @readonly entity Bikes as projection on my.Bikes where status.code = 'AVAILABLE';
-    entity Rentals as projection on my.Rentals;
-}
