@@ -1,4 +1,4 @@
-# 🏍️ Motorcycle Rental & Fleet Management (SAP CAP)
+# 🏍️ Motorcycle Fleet Management System
 
 [![SAP CAP](https://img.shields.io/badge/SAP-CAP-blue)](https://cap.cloud.sap/docs/)
 [![Node.js](https://img.shields.io/badge/Runtime-Node.js-green)](https://nodejs.org/)
@@ -11,29 +11,38 @@
 <a name="english"></a>
 ## 🇬🇧 English
 
-This project is a modern **Full-Stack Fleet Management Application** developed using the **SAP Cloud Application Programming (CAP)** model. It demonstrates a clean architecture with a Node.js backend and an SAP Fiori Elements frontend.
+This project is a modern **Full-Stack Fleet Management Application** developed using the **SAP Cloud Application Programming (CAP)** model. It demonstrates a unified architecture that serves two distinct user experiences: a professional Back-Office for managers and a visual Storefront for customers.
+
+### 🌟 Project Architecture & Features
+
+#### 1. Admin Panel (Back-Office)
+* **Technology:** SAP Fiori Elements (List Report & Object Page).
+* **Functionality:** Designed for fleet managers to handle data operations.
+* **Key Features:**
+    * Advanced filtering and search capabilities.
+    * Excel-like data management (CRUD operations).
+    * Real-time status tracking (Available/Rented).
+
+#### 2. Customer Storefront (Public View)
+* **Technology:** SAP Fiori Elements (Customized).
+* **Functionality:** A public-facing catalog for customers to browse motorcycles.
+* **Key Features:**
+    * **Mobile-First Design:** Automatically adapts to a "Card View" layout on mobile devices.
+    * **Visual Focus:** High-quality image display with essential vehicle details.
+    * **Read-Only Access:** Secure browsing without modification rights.
 
 ### 🚀 Tech Stack
 * **Framework:** SAP CAP (Node.js)
 * **Protocol:** OData V4
-* **Database:** SQLite (Persistent)
-* **Frontend:** SAP Fiori Elements (List Report & Object Page)
-* **Languages:** CDS (Core Data Services), JavaScript, XML
-
-### ⚙️ Key Features
-* **Business Logic & Validations:**
-    * **Auto-Calculation:** Automatically calculates the `total_price` based on the rental duration (days * daily rate).
-    * **Input Validation:** Prevents selecting start dates in the past or end dates before start dates.
-    * **Transactional Consistency:** Automatically updates the bike's status to `Rent (Kirada)` when a rental is created and resets it to `Available (Müsait)` when returned.
-* **UI/UX:**
-    * **Metadata Driven UI:** All UI layouts (columns, fields, facets) are generated via `common.cds` annotations without writing HTML/CSS.
-    * **Visual Status:** Color-coded status indicators (Green for Available, Red for Rented) using Criticality.
+* **Database:** SQLite (Dev) / HANA (Prod Ready)
+* **Frontend:** SAP Fiori Elements
+* **Languages:** CDS (Core Data Services), JavaScript
 
 ### 💻 Installation & Usage
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/YOUR_USERNAME/motorcycle-rental.git](https://github.com/YOUR_USERNAME/motorcycle-rental.git)
+    git clone [https://github.com/ProFSEVEN/motorcycle-rental.git](https://github.com/ProFSEVEN/motorcycle-rental.git)
     cd motorcycle-rental
     ```
 
@@ -42,7 +51,7 @@ This project is a modern **Full-Stack Fleet Management Application** developed u
     npm install
     ```
 
-3.  **Initialize Database (SQLite):**
+3.  **Initialize Database:**
     ```bash
     cds deploy --to sqlite
     ```
@@ -58,29 +67,38 @@ This project is a modern **Full-Stack Fleet Management Application** developed u
 <a name="türkçe"></a>
 ## 🇹🇷 Türkçe
 
-Bu proje, **SAP Cloud Application Programming (CAP)** modeli kullanılarak geliştirilmiş modern bir **Motosiklet Kiralama ve Filo Yönetim** sistemidir. Uçtan uca (Full-Stack) mimaride, Backend validasyonları ve Fiori arayüzü ile kurumsal standartlarda hazırlanmıştır.
+Bu proje, **SAP Cloud Application Programming (CAP)** modeli kullanılarak geliştirilmiş modern bir **Motosiklet Kiralama ve Filo Yönetim** sistemidir. Proje, tek bir mimari üzerinde iki farklı kullanıcı deneyimi sunan uçtan uca (Full-Stack) bir çözümdür.
+
+### 🌟 Proje Mimarisi ve Özellikler
+
+#### 1. Admin Paneli (Yönetim Ekranı)
+* **Teknoloji:** SAP Fiori Elements (List Report & Object Page).
+* **Amaç:** Filo yöneticilerinin tüm verileri yönetebilmesi için tasarlanmıştır.
+* **Özellikler:**
+    * Gelişmiş filtreleme ve arama seçenekleri.
+    * Excel benzeri veri yönetimi ve CRUD işlemleri.
+    * Anlık durum takibi (Müsait/Kirada ayrımı).
+
+#### 2. Müşteri Vitrini (Public Store)
+* **Teknoloji:** SAP Fiori Elements (Özelleştirilmiş).
+* **Amaç:** Müşterilerin araçları inceleyebilmesi için oluşturulmuş vitrin ekranıdır.
+* **Özellikler:**
+    * **Mobil Uyumlu Tasarım:** Mobil cihazlarda otomatik olarak "Kart Görünümü"ne (Card View) dönüşen responsive yapı.
+    * **Görsel Odaklı:** Araç resimlerinin ve temel bilgilerin şık sunumu.
+    * **Sadece Okunabilir (Read-Only):** Güvenli gezinme modu.
 
 ### 🚀 Teknolojiler
 * **Altyapı:** SAP CAP (Node.js)
 * **Protokol:** OData V4
-* **Veritabanı:** SQLite (Kalıcı Hafıza)
-* **Önyüz:** SAP Fiori Elements (List Report & Object Page)
+* **Veritabanı:** SQLite (Geliştirme) / HANA (Canlı)
+* **Önyüz:** SAP Fiori Elements
 * **Diller:** CDS (Core Data Services), JavaScript
-
-### ⚙️ Öne Çıkan Özellikler
-* **İş Mantığı (Business Logic):**
-    * **Otomatik Hesaplama:** Kiralama gün sayısına göre toplam tutarı (`total_price`) anlık olarak hesaplar.
-    * **Validasyonlar:** Geçmiş tarihli kiralama yapılmasını veya bitiş tarihinin başlangıçtan önce seçilmesini engeller.
-    * **Otomatik Statü Yönetimi:** Bir motor kiralandığında statüsünü otomatik olarak `Kirada` yapar, teslim alındığında `Müsait` durumuna çeker.
-* **Arayüz (UI):**
-    * **Metadata Güdümlü Tasarım:** HTML/CSS yazmadan, sadece `annotation` kullanarak dinamik ve responsive SAP Fiori ekranları oluşturulmuştur.
-    * **Görsel Deneyim:** Araç durumları renk kodlarıyla (Müsait: Yeşil, Kirada: Kırmızı) görselleştirilmiştir.
 
 ### 💻 Kurulum ve Çalıştırma
 
 1.  **Projeyi indirin:**
     ```bash
-    git clone [https://github.com/KULLANICI_ADINIZ/motorcycle-rental.git](https://github.com/KULLANICI_ADINIZ/motorcycle-rental.git)
+    git clone [https://github.com/ProFSEVEN/motorcycle-rental.git](https://github.com/ProFSEVEN/motorcycle-rental.git)
     cd motorcycle-rental
     ```
 
@@ -89,7 +107,7 @@ Bu proje, **SAP Cloud Application Programming (CAP)** modeli kullanılarak geli�
     npm install
     ```
 
-3.  **Veritabanını Kurun (SQLite):**
+3.  **Veritabanını Kurun:**
     ```bash
     cds deploy --to sqlite
     ```
@@ -101,4 +119,4 @@ Bu proje, **SAP Cloud Application Programming (CAP)** modeli kullanılarak geli�
     *Tarayıcınızda `http://localhost:4004` adresine gidin.*
 
 ---
-**Developer:** [Abdullah Alıcı]
+**Developer:** Abdullah Alıcı
