@@ -1,0 +1,3 @@
+ID;firstName;lastName;email;phoneNumber;driverLicenseType
+c1000000-0000-0000-0000-000000000001;Ahmet;Yilmaz;ahmet@test.com;5551112233;A
+c1000000-0000-0000-0000-000000000002;Ayse;Demir;ayse@test.com;5554445566;A2

@@ -1,0 +1,4 @@
+ID;make;model;plateNumber;dailyRate;currency_code;status_code;imageUrl
+b1000000-0000-0000-0000-000000000001;Yamaha;MT-07;34 PL 101;2500.00;TRY;AVAILABLE;https://example.com/mt07.jpg
+b1000000-0000-0000-0000-000000000002;Honda;CBR 650R;35 IZM 35;3200.00;TRY;RENTED;https://example.com/cbr650r.jpg
+b1000000-0000-0000-0000-000000000003;Ducati;Monster;06 ANK 06;5000.00;TRY;MAINTENANCE;https://example.com/monster.jpg

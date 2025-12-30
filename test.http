@@ -1,0 +1,37 @@
+### 1. Geçerli Kayıt Denemesi (tarih kontrol)
+POST http://localhost:4004/admin/Rentals
+Content-Type: application/json
+
+{
+  "startDate": "2025-01-10",
+  "endDate": "2025-01-15",
+}
+
+### 2. Hatalı Kayıt Denemesi (tarih kontrol)
+POST http://localhost:4004/admin/Rentals
+Content-Type: application/json
+
+{
+  "startDate": "2025-01-20",
+  "endDate": "2025-01-10",
+}
+
+### 3. Fiyat Hesaplama ve Durum(rented) Güncelleme Testi
+POST http://localhost:4004/admin/Rentals
+Content-Type: application/json
+
+{
+  "startDate": "2025-03-01",
+  "endDate": "2025-03-05",
+  "bike_ID": "b1000000-0000-0000-0000-000000000001",
+  "comments": "Motor durumu RENTED olmali"
+}
+
+### 4. Motor İade Testi (Rental Status -> Completed)
+
+PATCH http://localhost:4004/admin/Rentals(ID=be2c9f7a-3173-4453-8e88-07b59f989b12)
+Content-Type: application/json
+
+{
+  "status": "Completed"
+}

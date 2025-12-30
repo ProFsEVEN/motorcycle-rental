@@ -1,0 +1,4 @@
+code;name;descr;criticality
+AVAILABLE;Müsait;Motor kiralanabilir durumda;3
+RENTED;Kirada;Motor şu an bir müşteride;2
+MAINTENANCE;Bakımda;Motor serviste, kiralanamaz;1
