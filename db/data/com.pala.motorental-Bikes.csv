@@ -1,4 +1,4 @@
 ID;make;model;plateNumber;dailyRate;status_code;imageUrl
-b1;Yamaha;MT-07;34 ABC 123;150.00;1;https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80
-b2;Honda;CBR650R;35 XYZ 789;180.00;1;https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=800&q=80
-b3;Ducati;Monster;06 DUC 999;250.00;2;https://images.unsplash.com/photo-1619565636306-c67b2cb51722?auto=format&fit=crop&w=800&q=80
+1019688c-7650-424a-b850-9361f9bf3a87;Yamaha;MT-07;34 ABC 123;150.00;1;https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=800&q=80
+2029688c-7650-424a-b850-d5ad9cccf838;Honda;CBR650R;35 XYZ 789;180.00;1;https://images.unsplash.com/photo-1599819811279-d5ad9cccf838?auto=format&fit=crop&w=800&q=80
+3039688c-7650-424a-b850-c67b2cb51722;Ducati;Monster;06 DUC 999;250.00;2;https://images.unsplash.com/photo-1619565636306-c67b2cb51722?auto=format&fit=crop&w=800&q=80
